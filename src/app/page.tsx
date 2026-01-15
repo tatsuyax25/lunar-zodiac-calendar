@@ -1,46 +1,68 @@
 "use client";
 
-// We import the React's useStat so the page can react to user input.
+// We import useState so the page can react to user input.
+// This makes the page interactive (client component).
 import { useState } from "react";
 
-// Import your zodiac function from the module you created.
-import { getZodiacForYear } from "@/zodiac/zodiac";
+// Import the CalendarGrid component you created.
+// This component renders the 6×7 month layout.
+import CalendarGrid from "@/components/CalendarGrid";
 
 export default function HomePage() {
-  // Start with the current year as the default.
-  // This makes the page immediately show the user's zodiac when it loads.
-  const currentYear = new Date().getFullYear();
+  // Get today's date so the calendar starts on the current month/year.
+  const today = new Date();
 
-  // React state to store the year user is typing.
-  const [year, setYear] = useState<number>(currentYear);
+  // Store the selected year in React state.
+  // Default: current year.
+  const [year, setYear] = useState(today.getFullYear());
 
-  // Compute the zodiac animal for the selected year.
-  const zodiac = getZodiacForYear(year);
+  // Store the selected month in React state.
+  // JS months are 0–11, so January = 0, December = 11.
+  const [month, setMonth] = useState(today.getMonth());
 
   return (
     <main className="p-6 space-y-6">
       {/* Page title */}
-      <h1 className="text-3xl font-bold">Lunar Zodiac Finder</h1>
+      <h1 className="text-3xl font-bold">Lunar Zodiac Calendar</h1>
 
-      {/* Input field for the year */}
+      {/* YEAR INPUT SECTION */}
       <div className="space-y-2">
-        <label htmlFor="year-input" className="block font-medium">
-          Enter a year to see its zodiac:
-        </label>
+        <label htmlFor="year-input" className="block font-medium">Year:</label>
 
-        <input 
+        {/* Input for selecting the year.
+            - type="number" ensures numeric input
+            - onChange updates the state so the UI re-renders */}
+        <input
           id="year-input"
-          type="number" 
-          value={year} 
-          onChange={(e) => setYear(Number(e.target.value))} 
-          className="border rounded px-3 py-2 w-40" 
+          type="number"
+          value={year}
+          onChange={(e) => setYear(Number(e.target.value))}
+          className="border rounded px-3 py-2 w-40"
         />
       </div>
 
-      {/* Display the zodiac result */}
-      <div className="text-xl">
-        Zodiac Animal for {year}: <span className="font-semibold">{zodiac}</span>
+      {/* MONTH INPUT SECTION */}
+      <div className="space-y-2">
+        <label htmlFor="month-input" className="block font-medium">Month (0–11):</label>
+
+        {/* Input for selecting the month.
+            - min/max restrict input to valid JS month range
+            - month is stored as a number in state */}
+        <input
+          id="month-input"
+          type="number"
+          min={0}
+          max={11}
+          value={month}
+          onChange={(e) => setMonth(Number(e.target.value))}
+          className="border rounded px-3 py-2 w-40"
+        />
       </div>
+
+      {/* CALENDAR GRID RENDERING */}
+      {/* We pass the selected year and month into the CalendarGrid component.
+          The component uses your calendar engine to generate the month layout. */}
+      <CalendarGrid year={year} month={month} />
     </main>
   );
 }
