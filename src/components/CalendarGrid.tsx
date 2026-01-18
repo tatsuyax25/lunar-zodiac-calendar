@@ -3,6 +3,10 @@
 import { generateMonth } from "@/calendar/generators/generateMonth";
 import { CalendarDay } from "@/calendar/types/CalendarTypes";
 
+// Import zodiac logic + color map
+import { getZodiacForYear } from "@/zodiac/zodiac";
+import { ZODIAC_COLORS } from "@/zodiac/zodiacColors";
+
 interface CalendarGridProps {
   readonly year: number;
   readonly month: number; // 0 = January, 11 = December (JS month index)
@@ -16,9 +20,15 @@ export default function CalendarGrid({ year, month }: CalendarGridProps) {
   // Generate the 6x7 grid using your calendar engine
   const grid = generateMonth(year, month);
 
+  // Determine the zodiac for the selected year
+  const zodiac = getZodiacForYear(year);
+
+  // Pick the color for that zodiac
+  const zodiacColor = ZODIAC_COLORS[zodiac];
+
   return (
     <div className="space-y-2">
-      {/* Month + Year header */}
+      {/* Month + Year header, styled with zodiac color */}
       <h2 className="text-2xl font-bold">
         {new Date(year, month).toLocaleString("default", { month: "long", })} {year}
       </h2>
@@ -38,7 +48,11 @@ export default function CalendarGrid({ year, month }: CalendarGridProps) {
       <div className="grid grid-cols-7 gap-1">
         {grid.map((week, weekIndex) =>
           week.map((day: CalendarDay, dayIndex) => (
-            <div key={`${weekIndex}-${dayIndex}`} className={`border rounded p-2 text-center ${ day.isCurrentMonth ? "bg-white" : "bg-gray-100 text-gray-400" }`} >
+            <div key={`${weekIndex}-${dayIndex}`} className={`border rounded p-2 text-center ${ day.isCurrentMonth ? "bg-white" : "bg-gray-100 text-gray-400" }`} 
+              style={{
+                borderColor: zodiacColor,
+              }}
+              >
               {day.day === 0 ? "" : day.day}
             </div>
           ))
