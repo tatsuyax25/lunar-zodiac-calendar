@@ -4,6 +4,9 @@
 // This makes the page interactive (client component).
 import { useState } from "react";
 
+// Import the ZodiacBadge component
+import ZodiacBadge from "@/components/ZodiacBadge";
+
 // Import the CalendarGrid component you created.
 // This component renders the 6×7 month layout.
 import CalendarGrid from "@/components/CalendarGrid";
@@ -24,6 +27,9 @@ export default function HomePage() {
     <main className="p-6 space-y-6">
       {/* Page title */}
       <h1 className="text-3xl font-bold">Lunar Zodiac Calendar</h1>
+
+      {/* Zodiac badge for the selected year */}
+      <ZodiacBadge year={year} />
 
       {/* YEAR INPUT SECTION */}
       <div className="space-y-2">
@@ -66,3 +72,4 @@ export default function HomePage() {
     </main>
   );
 }
+
