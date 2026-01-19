@@ -1,0 +1,12 @@
+.calendarContainer {
+  background-color: var(--zodiac-bg);
+  border: 2px solid var(--zodiac-color);
+}
+
+.monthHeader {
+  color: var(--zodiac-color);
+}
+
+.dayCell {
+  border-color: var(--zodiac-color);
+}
