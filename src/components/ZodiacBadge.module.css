@@ -1,0 +1,8 @@
+.badge {
+  background-color: var(--zodiac-bg);
+  border: 2px solid var(--zodiac-color);
+}
+
+.label {
+  color: var(--zodiac-color);
+}
