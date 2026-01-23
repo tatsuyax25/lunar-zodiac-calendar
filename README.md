@@ -1,38 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏮 Lunar Zodiac Calendar
 
-## Getting Started
+A beautiful, interactive web application to track Chinese zodiac years and view lunar calendar dates. Built with Next.js and featuring accurate Lunar New Year calculations.
 
-First, run the development server:
+![Lunar Zodiac Calendar Screenshot](./screenshot.png)
+*Add your screenshot here*
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Zodiac Year Tracking** - Enter your birth year to see your Chinese zodiac animal
+- **Past & Future Years** - View all your past and upcoming zodiac years
+- **Lunar New Year Dates** - Accurate Lunar New Year dates from 2020-2034
+- **Interactive Calendar** - Month-by-month calendar view with zodiac themes
+- **Visual Highlights**
+  - 🔵 Blue highlight for today's date
+  - 🔴 Red highlight for Lunar New Year
+- **Festive Design** - Traditional red and gold color scheme with lantern decorations
+- **Responsive Layout** - Works beautifully on desktop and mobile devices
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
 
-## Learn More
+- Node.js 18+ installed
+- npm, yarn, pnpm, or bun package manager
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Built With
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **[Next.js 15](https://nextjs.org/)** - React framework
+- **[TypeScript](https://www.typescriptlang.org/)** - Type safety
+- **[Tailwind CSS](https://tailwindcss.com/)** - Styling
+- **[Noto Sans & Noto Serif](https://fonts.google.com/noto)** - Google Fonts with Asian language support
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📅 Zodiac Animals
 
-## Deploy on Vercel
+The 12 Chinese zodiac animals in order:
+🐀 Rat • 🐂 Ox • 🐅 Tiger • 🐇 Rabbit • 🐉 Dragon • 🐍 Snake • 🐎 Horse • 🐐 Goat • 🐒 Monkey • 🐓 Rooster • 🐕 Dog • 🐖 Pig
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Design Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# lunar-zodiac-calendar
-# lunar-zodiac-calendar
+- Warm gradient background with cream, peach, and gold tones
+- Semi-transparent cards with backdrop blur effects
+- Traditional red borders for festive feel
+- Decorative lantern (🏮) and red envelope (🧧) elements
+- Dynamic zodiac-themed calendar colors
+
+## 📦 Deployment
+
+This project is optimized for deployment on [Vercel](https://vercel.com):
+
+1. Push your code to GitHub
+2. Import your repository on Vercel
+3. Deploy with one click!
+
+Vercel automatically detects Next.js and configures everything for you.
+
+## 🔮 Future Updates
+
+### Planned Features
+- [ ] Add zodiac animal icons/illustrations
+- [ ] Include zodiac personality traits and compatibility
+- [ ] Multi-language support (English, Chinese, Spanish)
+- [ ] Export calendar as PDF or image
+- [ ] Add lunar phase indicators
+- [ ] Include traditional Chinese holidays
+- [ ] Dark mode support
+- [ ] Share zodiac year on social media
+- [ ] Add zodiac element system (Wood, Fire, Earth, Metal, Water)
+- [ ] Historical zodiac year lookup (pre-2020)
+
+### Known Issues
+- Lunar New Year dates only available for 2020-2034
+- Fallback calculation for years outside this range
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgments
+
+- Lunar New Year date calculations based on traditional Chinese calendar
+- Inspired by traditional Chinese zodiac culture
+- Built with modern web technologies for accessibility and performance
+
+---
+
+Made with ❤️ and 🏮
