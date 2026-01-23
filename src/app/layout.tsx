@@ -28,7 +28,6 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
-        style={{ fontFamily: "var(--font-noto-sans)" }}
       >
         {children}
       </body>

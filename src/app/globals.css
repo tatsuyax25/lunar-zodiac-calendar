@@ -23,7 +23,7 @@ body {
   background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 25%, #fce4d6 50%, #fdebd0 75%, #fef5e7 100%);
   background-attachment: fixed;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto-sans);
   position: relative;
 }
 

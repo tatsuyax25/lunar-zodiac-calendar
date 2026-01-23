@@ -5,6 +5,7 @@ import ZodiacBadge from "@/components/ZodiacBadge";
 import CalendarGrid from "@/components/CalendarGrid";
 import { getZodiacForDate } from "@/zodiac/zodiac";
 import { getLunarNewYearDate } from "@/zodiac/zodiac";
+import styles from "./page.module.css";
 
 export default function HomePage() {
   const today = new Date();
@@ -48,14 +49,14 @@ export default function HomePage() {
   return (
     <main className="p-6 max-w-7xl mx-auto space-y-8 min-h-screen">
       {/* Decorative elements */}
-      <div className="fixed top-10 right-10 text-9xl opacity-5 pointer-events-none select-none" style={{ fontFamily: "var(--font-noto-serif)" }}>
+      <div className={`fixed top-10 right-10 text-9xl opacity-5 pointer-events-none select-none ${styles.decorativeElement}`}>
         🏮
       </div>
-      <div className="fixed bottom-10 left-10 text-9xl opacity-5 pointer-events-none select-none" style={{ fontFamily: "var(--font-noto-serif)" }}>
+      <div className={`fixed bottom-10 left-10 text-9xl opacity-5 pointer-events-none select-none ${styles.decorativeElement}`}>
         🧧
       </div>
       
-      <h1 className="text-4xl font-bold text-center text-red-800" style={{ fontFamily: "var(--font-noto-serif)" }}>
+      <h1 className={`text-4xl font-bold text-center text-red-800 ${styles.pageTitle}`}>
         🏮 Lunar Zodiac Calendar 🏮
       </h1>
 
