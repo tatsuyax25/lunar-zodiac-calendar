@@ -46,143 +46,144 @@ export default function HomePage() {
   const lunarNewYear = getLunarNewYearDate(year);
 
   return (
-    <main className="p-6 max-w-6xl mx-auto space-y-8">
+    <main className="p-6 max-w-7xl mx-auto space-y-8">
       <h1 className="text-4xl font-bold text-center">Lunar Zodiac Calendar</h1>
 
-      {/* Birth Year Section */}
-      <div className="bg-white p-6 rounded-lg shadow-lg space-y-4">
-        <h2 className="text-2xl font-semibold">Your Zodiac Year</h2>
-        <div className="flex gap-4 items-end">
-          <div className="flex-1">
-            <label htmlFor="birth-year" className="block font-medium mb-2">Enter Your Birth Year:</label>
+      {/* Two Column Layout */}
+      <div className="grid lg:grid-cols-[280px_1fr] gap-6">
+        {/* Left Column - Your Zodiac Year */}
+        <div className="bg-white p-4 rounded-lg shadow-lg space-y-3">
+          <h2 className="text-xl font-semibold">Your Zodiac Year</h2>
+          <div>
+            <label htmlFor="birth-year" className="block text-sm font-medium mb-1">Birth Year:</label>
             <input
               id="birth-year"
               type="number"
               placeholder="e.g., 1990"
               onChange={(e) => setBirthYear(e.target.value ? Number(e.target.value) : null)}
-              className="border rounded px-4 py-2 w-full"
+              className="border rounded px-3 py-2 w-full text-sm"
             />
           </div>
-        </div>
 
-        {birthYear && zodiacYears.zodiac && (
-          <div className="space-y-4 mt-6">
-            <div className="flex items-center gap-3">
-              <span className="text-lg">Your Zodiac:</span>
-              <ZodiacBadge year={birthYear} />
-            </div>
+          {birthYear && zodiacYears.zodiac && (
+            <div className="space-y-3">
+              <div className="flex flex-col gap-1">
+                <span className="text-xs font-medium text-gray-600">Your Zodiac:</span>
+                <ZodiacBadge year={birthYear} />
+              </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold text-lg mb-2">Past Zodiac Years:</h3>
-                <div className="space-y-2">
+                <h3 className="text-sm font-semibold mb-1">Past Years:</h3>
+                <div className="space-y-1">
                   {zodiacYears.past.length > 0 ? (
                     zodiacYears.past.map((y) => (
-                      <div key={y} className="flex items-center gap-2">
+                      <div key={y} className="flex items-center justify-between text-sm">
                         <span className="text-gray-600">{y}</span>
                         <button
                           onClick={() => setYear(y)}
-                          className="text-sm text-blue-600 hover:underline"
+                          className="text-xs text-blue-600 hover:underline"
                         >
-                          View Calendar
+                          View
                         </button>
                       </div>
                     ))
                   ) : (
-                    <p className="text-gray-500">No past years yet</p>
+                    <p className="text-xs text-gray-500">None yet</p>
                   )}
                 </div>
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg mb-2">Future Zodiac Years:</h3>
-                <div className="space-y-2">
+                <h3 className="text-sm font-semibold mb-1">Future Years:</h3>
+                <div className="space-y-1">
                   {zodiacYears.future.map((y) => (
-                    <div key={y} className="flex items-center gap-2">
+                    <div key={y} className="flex items-center justify-between text-sm">
                       <span className="text-gray-600">{y}</span>
                       <button
                         onClick={() => setYear(y)}
-                        className="text-sm text-blue-600 hover:underline"
+                        className="text-xs text-blue-600 hover:underline"
                       >
-                        View Calendar
+                        View
                       </button>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
+          )}
+        </div>
+
+        {/* Right Column - Calendar View */}
+        <div className="space-y-6">
+          <div className="bg-white p-6 rounded-lg shadow-lg space-y-4">
+            <h2 className="text-2xl font-semibold">Calendar View</h2>
+            <div className="flex items-center gap-3">
+              <span className="text-lg">Viewing:</span>
+              <ZodiacBadge year={year} month={month} day={15} />
+            </div>
+            
+            {lunarNewYear && (
+              <div className="text-sm text-gray-600 bg-yellow-50 p-3 rounded border border-yellow-200">
+                ℹ️ Lunar New Year {year}: {lunarNewYear}
+              </div>
+            )}
+            
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="year-input" className="block font-medium mb-2">Year:</label>
+                <input
+                  id="year-input"
+                  type="number"
+                  value={year}
+                  onChange={(e) => setYear(Number(e.target.value))}
+                  className="border rounded px-4 py-2 w-full"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="month-select" className="block font-medium mb-2">Month:</label>
+                <select
+                  id="month-select"
+                  value={month}
+                  onChange={(e) => setMonth(Number(e.target.value))}
+                  className="border rounded px-4 py-2 w-full"
+                >
+                  {months.map((m, i) => (
+                    <option key={i} value={i}>{m}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="flex gap-2">
+              <button
+                onClick={() => {
+                  setYear(today.getFullYear());
+                  setMonth(today.getMonth());
+                }}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              >
+                Today
+              </button>
+              <button
+                onClick={() => setMonth((month - 1 + 12) % 12)}
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+              >
+                Previous Month
+              </button>
+              <button
+                onClick={() => setMonth((month + 1) % 12)}
+                className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+              >
+                Next Month
+              </button>
+            </div>
           </div>
-        )}
+
+          {/* Calendar Grid */}
+          <CalendarGrid year={year} month={month} />
+        </div>
       </div>
-
-      {/* Calendar Controls */}
-      <div className="bg-white p-6 rounded-lg shadow-lg space-y-4">
-        <h2 className="text-2xl font-semibold">Calendar View</h2>
-        <div className="flex items-center gap-3">
-          <span className="text-lg">Viewing:</span>
-          <ZodiacBadge year={year} month={month} day={15} />
-        </div>
-        
-        {lunarNewYear && (
-          <div className="text-sm text-gray-600 bg-yellow-50 p-3 rounded border border-yellow-200">
-            ℹ️ Lunar New Year {year}: {lunarNewYear}
-          </div>
-        )}
-        
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="year-input" className="block font-medium mb-2">Year:</label>
-            <input
-              id="year-input"
-              type="number"
-              value={year}
-              onChange={(e) => setYear(Number(e.target.value))}
-              className="border rounded px-4 py-2 w-full"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="month-select" className="block font-medium mb-2">Month:</label>
-            <select
-              id="month-select"
-              value={month}
-              onChange={(e) => setMonth(Number(e.target.value))}
-              className="border rounded px-4 py-2 w-full"
-            >
-              {months.map((m, i) => (
-                <option key={i} value={i}>{m}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="flex gap-2">
-          <button
-            onClick={() => {
-              setYear(today.getFullYear());
-              setMonth(today.getMonth());
-            }}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
-            Today
-          </button>
-          <button
-            onClick={() => setMonth((month - 1 + 12) % 12)}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
-          >
-            Previous Month
-          </button>
-          <button
-            onClick={() => setMonth((month + 1) % 12)}
-            className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
-          >
-            Next Month
-          </button>
-        </div>
-      </div>
-
-      {/* Calendar Grid */}
-      <CalendarGrid year={year} month={month} />
     </main>
   );
 }
