@@ -120,7 +120,7 @@ export default function HomePage() {
         <h2 className="text-2xl font-semibold">Calendar View</h2>
         <div className="flex items-center gap-3">
           <span className="text-lg">Viewing:</span>
-          <ZodiacBadge year={year} />
+          <ZodiacBadge year={year} month={month} day={15} />
         </div>
         
         {lunarNewYear && (

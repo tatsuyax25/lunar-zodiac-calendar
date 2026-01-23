@@ -6,7 +6,9 @@ import { ZODIAC_COLORS } from "@/zodiac/zodiacColors";
 import styles from "./ZodiacBadge.module.css";
 
 interface ZodiacBadgeProps {
-  readonly year: number; // The year we want to display the zodiac for
+  readonly year: number;
+  readonly month?: number;
+  readonly day?: number;
 }
 
 /** 
@@ -17,11 +19,10 @@ interface ZodiacBadgeProps {
  * This component is intentionally simple and reusable.
  * Later, you can expand it with icons, animations, or metadata.
  */
-export default function ZodiacBadge({ year }: ZodiacBadgeProps) {
+export default function ZodiacBadge({ year, month = 6, day = 1 }: ZodiacBadgeProps) {
   const badgeRef = useRef<HTMLDivElement>(null);
   
-  // Determine the zodiac animal for mid-year (July 1st)
-  const zodiac = getZodiacForDate(year, 6, 1);
+  const zodiac = getZodiacForDate(year, month, day);
 
   // Get the color associated with that zodiac
   const color = ZODIAC_COLORS[zodiac];
