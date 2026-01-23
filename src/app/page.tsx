@@ -46,15 +46,23 @@ export default function HomePage() {
   const lunarNewYear = getLunarNewYearDate(year);
 
   return (
-    <main className="p-6 max-w-7xl mx-auto space-y-8">
-      <h1 className="text-4xl font-bold text-center" style={{ fontFamily: "var(--font-noto-serif)" }}>
-        Lunar Zodiac Calendar
+    <main className="p-6 max-w-7xl mx-auto space-y-8 min-h-screen">
+      {/* Decorative elements */}
+      <div className="fixed top-10 right-10 text-9xl opacity-5 pointer-events-none select-none" style={{ fontFamily: "var(--font-noto-serif)" }}>
+        🏮
+      </div>
+      <div className="fixed bottom-10 left-10 text-9xl opacity-5 pointer-events-none select-none" style={{ fontFamily: "var(--font-noto-serif)" }}>
+        🧧
+      </div>
+      
+      <h1 className="text-4xl font-bold text-center text-red-800" style={{ fontFamily: "var(--font-noto-serif)" }}>
+        🏮 Lunar Zodiac Calendar 🏮
       </h1>
 
       {/* Two Column Layout */}
       <div className="grid lg:grid-cols-[280px_1fr] gap-6">
         {/* Left Column - Your Zodiac Year */}
-        <div className="bg-white p-4 rounded-lg shadow-lg space-y-3">
+        <div className="bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg space-y-3 border border-red-100">
           <h2 className="text-xl font-semibold">Your Zodiac Year</h2>
           <div>
             <label htmlFor="birth-year" className="block text-sm font-medium mb-1">Birth Year:</label>
@@ -117,7 +125,7 @@ export default function HomePage() {
 
         {/* Right Column - Calendar View */}
         <div className="space-y-6">
-          <div className="bg-white p-6 rounded-lg shadow-lg space-y-4">
+          <div className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-lg space-y-4 border border-red-100">
             <h2 className="text-2xl font-semibold">Calendar View</h2>
             <div className="flex items-center gap-3">
               <span className="text-lg">Viewing:</span>
