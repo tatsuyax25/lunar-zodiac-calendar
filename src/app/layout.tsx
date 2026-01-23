@@ -17,6 +17,17 @@ const notoSerif = Noto_Serif({
 export const metadata: Metadata = {
   title: "Lunar Zodiac Calendar",
   description: "Track your Chinese zodiac years and view lunar calendar dates",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  themeColor: "#fef5e7",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Lunar Zodiac",
+  },
 };
 
 export default function RootLayout({
@@ -26,6 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="format-detection" content="telephone=no" />
+      </head>
       <body
         className={`${notoSans.variable} ${notoSerif.variable} antialiased`}
       >

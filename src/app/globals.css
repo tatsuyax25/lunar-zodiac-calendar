@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,12 +24,21 @@
   }
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 25%, #fce4d6 50%, #fdebd0 75%, #fef5e7 100%);
   background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-noto-sans);
   position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body::before {
@@ -40,6 +54,23 @@ body::before {
     radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.02) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
+}
+
+button, input, select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 main {

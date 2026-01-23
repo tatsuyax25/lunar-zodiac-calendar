@@ -17,13 +17,6 @@ A beautiful, interactive web application to track Chinese zodiac years and view 
 - **Festive Design** - Traditional red and gold color scheme with lantern decorations
 - **Responsive Layout** - Works beautifully on desktop and mobile devices
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ installed
-- npm, yarn, pnpm, or bun package manager
-
 ## 🛠️ Built With
 
 - **[Next.js 15](https://nextjs.org/)** - React framework
