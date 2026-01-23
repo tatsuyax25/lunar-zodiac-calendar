@@ -3,7 +3,8 @@
 import { useState } from "react";
 import ZodiacBadge from "@/components/ZodiacBadge";
 import CalendarGrid from "@/components/CalendarGrid";
-import { getZodiacForYear } from "@/zodiac/zodiac";
+import { getZodiacForDate } from "@/zodiac/zodiac";
+import { getLunarNewYearDate } from "@/zodiac/zodiac";
 
 export default function HomePage() {
   const today = new Date();
@@ -20,20 +21,20 @@ export default function HomePage() {
   const getZodiacYears = () => {
     if (!birthYear) return { past: [], future: [] };
     
-    const birthZodiac = getZodiacForYear(birthYear);
+    const birthZodiac = getZodiacForDate(birthYear, 6, 1); // Mid-year
     const currentYear = today.getFullYear();
     const past: number[] = [];
     const future: number[] = [];
 
-    // Find past zodiac years (up to 5 occurrences before current year)
+    // Find past zodiac years
     for (let y = birthYear; y < currentYear; y += 12) {
       if (y !== birthYear) past.push(y);
     }
 
-    // Find future zodiac years (next 5 occurrences)
+    // Find future zodiac years
     for (let i = 1; i <= 5; i++) {
       const nextYear = currentYear + (12 - ((currentYear - birthYear) % 12)) + ((i - 1) * 12);
-      if (getZodiacForYear(nextYear) === birthZodiac) {
+      if (getZodiacForDate(nextYear, 6, 1) === birthZodiac) {
         future.push(nextYear);
       }
     }
@@ -42,6 +43,7 @@ export default function HomePage() {
   };
 
   const zodiacYears = getZodiacYears();
+  const lunarNewYear = getLunarNewYearDate(year);
 
   return (
     <main className="p-6 max-w-6xl mx-auto space-y-8">
@@ -120,6 +122,12 @@ export default function HomePage() {
           <span className="text-lg">Viewing:</span>
           <ZodiacBadge year={year} />
         </div>
+        
+        {lunarNewYear && (
+          <div className="text-sm text-gray-600 bg-yellow-50 p-3 rounded border border-yellow-200">
+            ℹ️ Lunar New Year {year}: {lunarNewYear}
+          </div>
+        )}
         
         <div className="grid md:grid-cols-2 gap-4">
           <div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { getZodiacForYear, Zodiac } from "@/zodiac/zodiac";
+import { getZodiacForDate, Zodiac } from "@/zodiac/zodiac";
 import { ZODIAC_COLORS } from "@/zodiac/zodiacColors";
 import styles from "./ZodiacBadge.module.css";
 
@@ -20,8 +20,8 @@ interface ZodiacBadgeProps {
 export default function ZodiacBadge({ year }: ZodiacBadgeProps) {
   const badgeRef = useRef<HTMLDivElement>(null);
   
-  // Determine the zodiac animal for the given year
-  const zodiac = getZodiacForYear(year);
+  // Determine the zodiac animal for mid-year (July 1st)
+  const zodiac = getZodiacForDate(year, 6, 1);
 
   // Get the color associated with that zodiac
   const color = ZODIAC_COLORS[zodiac];

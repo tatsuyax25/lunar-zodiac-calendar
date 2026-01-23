@@ -5,7 +5,7 @@ import { generateMonth } from "@/calendar/generators/generateMonth";
 import { CalendarDay } from "@/calendar/types/CalendarTypes";
 
 // Import zodiac logic + color map
-import { getZodiacForYear } from "@/zodiac/zodiac";
+import { getZodiacForDate } from "@/zodiac/zodiac";
 import { ZODIAC_COLORS } from "@/zodiac/zodiacColors";
 import styles from "./CalendarGrid.module.css";
 
@@ -24,8 +24,8 @@ export default function CalendarGrid({ year, month }: CalendarGridProps) {
   // Generate the 6x7 grid using your calendar engine
   const grid = generateMonth(year, month);
 
-  // Determine the zodiac for the selected year
-  const zodiac = getZodiacForYear(year);
+  // Determine the zodiac for the middle of the month (15th)
+  const zodiac = getZodiacForDate(year, month, 15);
 
   // Pick the color for that zodiac
   const zodiacColor = ZODIAC_COLORS[zodiac];
