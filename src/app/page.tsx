@@ -47,7 +47,9 @@ export default function HomePage() {
 
   return (
     <main className="p-6 max-w-7xl mx-auto space-y-8">
-      <h1 className="text-4xl font-bold text-center">Lunar Zodiac Calendar</h1>
+      <h1 className="text-4xl font-bold text-center" style={{ fontFamily: "var(--font-noto-serif)" }}>
+        Lunar Zodiac Calendar
+      </h1>
 
       {/* Two Column Layout */}
       <div className="grid lg:grid-cols-[280px_1fr] gap-6">
