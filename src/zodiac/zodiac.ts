@@ -75,3 +75,10 @@ export function getLunarNewYearDate(year: number): string | null {
   const months = ["January", "February", "March"];
   return `${months[month]} ${day}, ${year}`;
 }
+
+/** Returns the Lunar New Year day for a given year */
+export function getLunarNewYearDay(year: number): { month: number; day: number } | null {
+  if (!LUNAR_NEW_YEAR_DATES[year]) return null;
+  const [month, day] = LUNAR_NEW_YEAR_DATES[year];
+  return { month, day };
+}
