@@ -18,7 +18,7 @@ A beautiful, interactive web application to track Chinese zodiac years and view 
   - 🔵 Blue highlight for today's date
   - 🔴 Red highlight for Lunar New Year
 - **Festive Design** - Traditional red and gold color scheme with lantern decorations
-- **Responsive Layout** - Works beautifully on desktop and mobile devices
+- **Responsive Layout** - Works beautifully on desktop, tablet, and mobile devices
 
 ## 🛠️ Built With
 
