@@ -2,8 +2,11 @@
 
 A beautiful, interactive web application to track Chinese zodiac years and view lunar calendar dates. Built with Next.js and featuring accurate Lunar New Year calculations.
 
-![Lunar Zodiac Calendar Screenshot](./screenshot.png)
-*Add your screenshot here*
+## Screenshots
+![Lunar Zodiac Calendar Screenshot](https://i.imgur.com/RpQV4gx.png)
+![Lunar Zodiac Calendar Screenshot](https://i.imgur.com/UrWWf1F.png)
+![Lunar Zodiac Calendar Screenshot](https://i.imgur.com/EGAYEq1.png)
+![Lunar Zodiac Calendar Screenshot](https://i.imgur.com/cMLN9tu.png)
 
 ## ✨ Features
 
